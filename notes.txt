@@ -1,0 +1,66 @@
+to add controller right click on controllers
+to add layout, views>shared>add>search for layout
+copy full path and change \ to / with ~ at start
+
+in controller ViewBag.Title =  "Welcome"
+in views <h2>@ViewBag.Title</h2>
+
+in controller ViewData[”Title”] = “Welcome”; 
+in views <h2>@ViewData[“Title”]</h2>
+
+to access models in controller
+var students = new List<Modelname>
+
+in .cshtml
+var data = ViewData["students"] as List<modelname>
+
+@foreach(var stud in data) @stud.Id
+
+
+if(ModelState.IsValid){return "Name is: "+ std.Name}
+
+
+asp.net core web api for di
+
+
+sql server
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+            optionsBuilder.UseSqlServer("Server = SUYASH\\SQLEXPRESS; Database = MyDB;Integrated Security=true;TrustServerCertificate=true");
+
+
+crud using cfa 
+create a controller with read/write
+
+        private readonly StudentDBContext _context;
+        public CustomerC1()
+        {
+            _context = new StudentDBContext();
+        }
+        public ActionResult Index()
+        {
+            var customers = _context.Students.ToList();
+            return View();
+        }
+
+for dfa
+Install 3 packages- Microsoftentityframeworkcore,Microsoftentityframeworkcore.tools,Microsoftentityframeworkcore.sqlserver
+Then open package manager console and write following commands
+Scaffold-DbContext "Server=DESKTOP-AV5MO6J\SQLEXPRESS;Database=palvidb1; Integrated Security=true;TrustServerCertificate=true;" 
+
+
+ public DbSet<Product> Products { get; set; }
+
+ public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) { 
+
+
+in program.cs
+builder.Services.AddDbContext<ApplicationDbContext>
+    (
+    options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    }
+    );
+
